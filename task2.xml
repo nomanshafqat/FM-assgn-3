@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+clock c;int x=1;
+
+</declaration>
+	<template>
+		<name x="5" y="5">writer</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-212" y="8">
+			<name x="-222" y="-26">Writing</name>
+		</location>
+		<location id="id1" x="-527" y="-110">
+			<name x="-537" y="-144">waiting</name>
+		</location>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="assignment" x="-323" y="-170">x:=1</label>
+			<nail x="-306" y="-144"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-450" y="-17">x==1</label>
+			<label kind="assignment" x="-450" y="17">x:=0</label>
+			<nail x="-416" y="51"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+writer1 = writer();
+writer2=writer();
+writer3=writer();
+// List one or more processes to be composed into a system.
+system writer1,writer2,writer3;
+    </system>
+	<queries>
+	</queries>
+</nta>
